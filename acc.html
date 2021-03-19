@@ -5,54 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/2317a65c00.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/2317a65c00.js" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
 
     <style>
-        *{padding:0;}
-        .accodionList:first-child{border-top:2px solid #000; }
-        .accodionTitle{border-bottom:1px solid #000;  padding:20px 20px 20px; position:relative;}
-        .accodionTitle a{position:absolute; top:10px; right:20px; font-size:24px; color:black}
-        .accodionAnsWer{border-bottom:1px solid #000; padding:10px 20px 10px;}
-    
+		ul{margin:0; padding:0}
+		li{list-style:none;}
+		a{text-decoration: none;}
+		.section{padding:0 20px;}
+		.accodionList{border:1px solid #d5d5d5}
+		
+		.accodionList li{border-bottom: 1px solid #d6d6d6;}
+		.accodionList li:last-of-type{border-bottom:0}
+		.accodionList li .tit{position:relative; padding:10px 20px; }
+		.accodionList li .tit a {display:flex;width: 100%;}
+		.accodionList li .tit:after{content:''; display:inline-block; width:10px;height:10px; border:1px solid #888; border-width: 0 0 1px 1px; transform: rotate(-43deg); cursor:pointer; position:absolute; right:20px; top:50%; margin-top:-5px; }
+		.accodionList li .panel{padding:10px 20px; border-top: 1px solid #d6d6d6;}
     
        </style>
 
     <script>
         $(function(){
-            var accodionBtn = $('.accodionTitle a');
-            accodionBtn.on('click',function(){
-                $(this).parent().next('.accodionAnsWer').slideToggle();
-                $(this).parent().next().siblings('.accodionAnsWer').slideUp();
+			
 
-            })         
         });
     </script>
 </head>
 <body>
-    <div class="accodionList">
-        <div class="accodionTitle">
-            test1
-            <a href="#" class="cl"><i class="fas fa-sort-down"></i></a>
-        </div>
-        <div class="accodionAnsWer" style="display:block">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis reiciendis impedit error, voluptas explicabo officia repellat cupiditate ea quod quibusdam, soluta ullam totam veniam corrupti, neque maiores molestiae iusto voluptatibus?
-        </div>
-        <div class="accodionTitle">
-            test1
-            <a href="#" class="cl"><i class="fas fa-sort-down"></i></a>
-        </div>
-        <div class="accodionAnsWer" style="display:none">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis reiciendis impedit error, voluptas explicabo officia repellat cupiditate ea quod quibusdam, soluta ullam totam veniam corrupti, neque maiores molestiae iusto voluptatibus?
-        </div>  
-        <div class="accodionTitle">
-            test1
-            <a href="#" class="cl"><i class="fas fa-sort-down"></i></a>
-        </div>
-        <div class="accodionAnsWer" style="display:none">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis reiciendis impedit error, voluptas explicabo officia repellat cupiditate ea quod quibusdam, soluta ullam totam veniam corrupti, neque maiores molestiae iusto voluptatibus?
-        </div>  
-    </div>
+	<div class="section">
+		<h4>case01</h4>
+		<ul class="accodionList">
+			<li>
+				<div class="tit"><a href="#">질문</a></div>
+				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
+			</li>
+			<li>
+				<div class="tit"><a href="#">질문</a></div>
+				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
+			</li>
+			<li>
+				<div class="tit"><a href="#">질문</a></div>
+				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
+			</li>
+		</ul>
+
+	</div>
     
 </body>
 </html>
