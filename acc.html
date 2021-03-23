@@ -28,6 +28,10 @@
 
     <script>
         $(function(){
+			accodionEvent();
+        });
+
+		function accodionEvent(){
 			$('.panel').hide();
 			
 			var $accBtnCase1; 
@@ -56,7 +60,7 @@
 				$(this).toggleClass('open').attr('aria-select', true).parent().next('.panel').fadeToggle(100);
 			});
 			return false;	
-        });
+		}
 
     </script>
 </head>
