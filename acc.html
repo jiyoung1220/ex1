@@ -35,28 +35,28 @@
 			$('.panel').hide();
 			
 			var $accBtnCase1 = $('.accodionList.case1 li .tit a');
-			$accBtnCase1.on('click', function(){
+			$accBtnCase1.on('click', function(e){
+				e.preventDefault();
 				$(this).toggleClass('open')
 				if($(this).hasClass('open')){
 					$(this).parent().next('.panel').slideDown(250);
 				}else{
 					$(this).parent().next('.panel').slideUp(250);
 				}
-				return false;
 			});
 			var $accBtnCase2 = $('.accodionList.case2 li .tit a');
-			$accBtnCase2.on('click', function(){
+			$accBtnCase2.on('click', function(e){
+				e.preventDefault();
 				if($(this).toggleClass('open')){
 					$(this).parent().next('.panel').slideToggle(200);
 					$(this).closest('li').siblings().find($accBtnCase2).removeClass('open').parent().next('.panel').slideUp(200)			
 				}
-				return false;
 			})
 
 			var $accBtnCase = $('.accodionList.case li .tit a');
-			$accBtnCase.on('click', function(){
+			$accBtnCase.on('click', function(e){
+				e.preventDefault();
 				$(this).toggleClass('open').parent().next('.panel').fadeToggle(100);
-				return false;
 			});
 		}
 
