@@ -31,14 +31,10 @@
 			accodionEvent();
         });
 
-		function accodionEvent(){
+		var accodionEvent = function(){
 			$('.panel').hide();
 			
-			var $accBtnCase1; 
-			var $accBtnCase2;
-			var $accBtnCase;
-
-			$accBtnCase1 = $('.accodionList.case1 li .tit a');
+			var $accBtnCase1 = $('.accodionList.case1 li .tit a');
 			$accBtnCase1.on('click', function(){
 				$(this).toggleClass('open')
 				if($(this).hasClass('open')){
@@ -47,7 +43,7 @@
 					$(this).attr('aria-select',false).parent().next('.panel').slideUp(250);
 				}		
 			});
-			$accBtnCase2 = $('.accodionList.case2 li .tit a');
+			var $accBtnCase2 = $('.accodionList.case2 li .tit a');
 			$accBtnCase2.on('click', function(){
 				if($(this).toggleClass('open').attr('aria-select', true)){
 					$(this).parent().next('.panel').slideToggle(200);
@@ -55,7 +51,7 @@
 				}
 			})
 
-			$accBtnCase = $('.accodionList.case li .tit a');
+			var $accBtnCase = $('.accodionList.case li .tit a');
 			$accBtnCase.on('click', function(){
 				$(this).toggleClass('open').attr('aria-select', true).parent().next('.panel').fadeToggle(100);
 			});
