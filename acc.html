@@ -19,11 +19,11 @@
 		.accodionList li:last-of-type{border-bottom:0}
 		.accodionList li .tit{position:relative; padding:15px 20px; }
 		.accodionList li .tit a {display:flex;width: 100%;}
+		.accodionList li .tit.Event{background:rgba(0,0,0,0.2);transform:scale(1);}
 		.accodionList li .tit a:after{content:''; display:inline-block; width:10px;height:10px; border:1px solid #222; border-width: 0 0 1px 1px; transform: rotate(-43deg); position:absolute; right:20px; top:50%; margin-top:-6px; }
-		.accodionList li .tit a.open{color:blueviolet}
+		.accodionList li .tit a.open{color:blueviolet; }
 		.accodionList li .tit a.open:after{margin-top:0; transform: rotate(134deg);}
 		.accodionList li .panel{padding:15px 20px; border-top: 1px solid #d6d6d6;}
-    
        </style>
 
     <script>
@@ -36,7 +36,7 @@
 
 			$accBtnCase1 = $('.accodionList.case1 li .tit a');
 			$accBtnCase1.on('click', function(){
-				$(this).toggleClass('open');
+				$(this).toggleClass('open')
 				if($(this).hasClass('open')){
 					$(this).attr('aria-select',true).parent().next('.panel').slideDown(250);
 				}else{
@@ -47,17 +47,15 @@
 			$accBtnCase2.on('click', function(){
 				if($(this).toggleClass('open').attr('aria-select', true)){
 					$(this).parent().next('.panel').slideToggle(200);
-					$(this).closest('li').siblings().find($accBtnCase2).attr('aria-select', false).removeClass('open').parent().next('.panel').slideUp(200);			
+					$(this).closest('li').siblings().find($accBtnCase2).attr('aria-select', false).removeClass('open').parent().next('.panel').slideUp(200)			
 				}
 			})
 
 			$accBtnCase = $('.accodionList.case li .tit a');
 			$accBtnCase.on('click', function(){
 				$(this).toggleClass('open').attr('aria-select', true).parent().next('.panel').fadeToggle(100);
-			});	
-
-		
-			
+			});
+			return false;	
         });
 
     </script>
@@ -67,7 +65,7 @@
 		<h4>case01</h4>
 		<ul class="accodionList case1">
 			<li>
-				<div class="tit"><a href="#" class="" role="button">질문</a></div>
+				<div class="tit Event"><a href="#" class="Event" role="button">질문</a></div>
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
 			</li>
 			<li>
