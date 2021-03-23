@@ -17,53 +17,58 @@
 		.accodionList + .accodionList{margin-top:30px;}
 		.accodionList li{border-bottom: 1px solid #d6d6d6;}
 		.accodionList li:last-of-type{border-bottom:0}
-		.accodionList li .tit{position:relative; padding:15px 20px; }
-		.accodionList li .tit a {display:flex;width: 100%; color:#666;}
-		.accodionList li .tit a:after{content:''; display:inline-block; width:10px;height:10px; border:1px solid #222; border-width: 0 0 1px 1px; transform: rotate(-43deg); position:absolute; right:20px; top:50%; margin-top:-6px; }
+		.accodionList li .tit{position:relative;}
+		.accodionList li .tit a {display:block;color:#666; padding:15px 20px; }
+		.accodionList li .tit a:after{content:''; display:inline-block; width:10px;height:10px; border:1px solid #222; border-width: 0 0 1px 1px; transform: rotate(-45deg); position:absolute; right:20px; top:50%; margin-top:-6px;transition:0.3s;}
 		.accodionList li .tit a.open{color:#000; font-weight:bold;}
-		.accodionList li .tit a.open:after{margin-top:0; transform: rotate(134deg);}
+		.accodionList li .tit a.open:after{margin-top:0; transform: rotate(135deg);}
 		.accodionList li .panel{padding:15px 20px; border-top: 1px solid #d6d6d6;}
        </style>
 
     <script>
         $(function(){
-			$('.panel').hide();
-			var $accBtnCase1;
-			var	$accBtnCase2;
-			var	$accBtnCase;
-			var	$accBtnCasePaenl;
-
-			$accBtnCase1 = $('.accodionList.case1 li .tit a');
-			$accBtnCase1.on('click', function(){
-				$(this).toggleClass('open')
-				if($(this).hasClass('open')){
-					$(this).attr('aria-select',true).parent().next('.panel').slideDown(250);
-				}else{
-					$(this).attr('aria-select',false).parent().next('.panel').slideUp(250);
-				}		
-			});
-			$accBtnCase2 = $('.accodionList.case2 li .tit a');
-			$accBtnCase2.on('click', function(){
-				if($(this).toggleClass('open').attr('aria-select', true)){
-					$(this).parent().next('.panel').slideToggle(200);
-					$(this).closest('li').siblings().find($accBtnCase2).attr('aria-select', false).removeClass('open').parent().next('.panel').slideUp(200)			
-				}
-			})
-
-			$accBtnCase = $('.accodionList.case li .tit a');
-			$accBtnCasePanel = $('.accodionList.case li .tit a').parent().next('.panel');
-			$accBtnCasePanel.show();
-			$accBtnCase.on('click', function(){
-				$(this).toggleClass('open').attr('aria-select', true).parent().next('.panel').slideToggle(200);
-			});	
+			accodionListEvent();
         });
 
+		function accodionListEvent(){
+			//페이지 로딩 시
+			$('.panel').hide();
+			var $accBtnOpen = $('.accodionList li .tit a.open');
+			$accBtnOpen.each(function(){
+				if($(this).hasClass('open')){
+					$(this).parent().next('.panel').show();
+				}
+			});
+
+			//클릭 시
+			var $accBtn = $('.accodionList li .tit a');
+			$accBtn.on('click', function(e){
+				e.preventDefault();
+				var $closest = $(this).closest('.accodionList');
+
+				if($closest.hasClass('case2')){
+					//2번기능일때 
+					if($(this).toggleClass('open')){
+						$(this).parent().next('.panel').stop(true,false).slideToggle(200);
+						$(this).closest('li').siblings().find('.tit a').removeClass('open').parent().next('.panel').stop().slideUp(200)			
+					}
+				}else{
+					//1번기능(기본)일때p
+					$(this).toggleClass('open')
+					if($(this).hasClass('open')){
+						$(this).parent().next('.panel').stop().slideDown(200);
+					}else{
+						$(this).parent().next('.panel').stop().slideUp(200);
+					}	
+				}
+			});
+		}
     </script>
 </head>
 <body>
 	<div class="section">
 		<h4>case01</h4>
-		<ul class="accodionList case1">
+		<ul class="accodionList">
 			<li>
 				<div class="tit"><a href="#" role="button">질문</a></div>
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
@@ -73,7 +78,7 @@
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
 			</li>
 			<li>
-				<div class="tit"><a href="#" role="button">질문</a></div>
+				<div class="tit"><a href="#" role="button" class="open">질문</a></div>
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
 			</li>
 		</ul>
@@ -85,7 +90,7 @@
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
 			</li>
 			<li>
-				<div class="tit"><a href="#" role="button">질문</a></div>
+				<div class="tit"><a href="#" role="button" class="open">질문</a></div>
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
 			</li>
 			<li>
@@ -95,9 +100,9 @@
 		</ul>
 
 		<h4>case03</h4>
-		<ul class="accodionList case">
+		<ul class="accodionList">
 			<li>
-				<div class="tit"><a href="#" role="button">질문</a></div>
+				<div class="tit"><a href="#" role="button" class="open">질문</a></div>
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
 			</li>
 		</ul>
