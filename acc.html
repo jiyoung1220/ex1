@@ -18,10 +18,9 @@
 		.accodionList li{border-bottom: 1px solid #d6d6d6;}
 		.accodionList li:last-of-type{border-bottom:0}
 		.accodionList li .tit{position:relative; padding:15px 20px; }
-		.accodionList li .tit a {display:flex;width: 100%;}
-		.accodionList li .tit.Event{background:rgba(0,0,0,0.2);transform:scale(1);}
+		.accodionList li .tit a {display:flex;width: 100%; color:#666;}
 		.accodionList li .tit a:after{content:''; display:inline-block; width:10px;height:10px; border:1px solid #222; border-width: 0 0 1px 1px; transform: rotate(-43deg); position:absolute; right:20px; top:50%; margin-top:-6px; }
-		.accodionList li .tit a.open{color:blueviolet; }
+		.accodionList li .tit a.open{color:#000; font-weight:bold;}
 		.accodionList li .tit a.open:after{margin-top:0; transform: rotate(134deg);}
 		.accodionList li .panel{padding:15px 20px; border-top: 1px solid #d6d6d6;}
        </style>
@@ -29,10 +28,10 @@
     <script>
         $(function(){
 			$('.panel').hide();
-			
-			var $accBtnCase1; 
-			var $accBtnCase2;
-			var $accBtnCase;
+			var $accBtnCase1;
+			var	$accBtnCase2;
+			var	$accBtnCase;
+			var	$accBtnCasePaenl;
 
 			$accBtnCase1 = $('.accodionList.case1 li .tit a');
 			$accBtnCase1.on('click', function(){
@@ -52,10 +51,11 @@
 			})
 
 			$accBtnCase = $('.accodionList.case li .tit a');
+			$accBtnCasePanel = $('.accodionList.case li .tit a').parent().next('.panel');
+			$accBtnCasePanel.show();
 			$accBtnCase.on('click', function(){
-				$(this).toggleClass('open').attr('aria-select', true).parent().next('.panel').fadeToggle(100);
-			});
-			return false;	
+				$(this).toggleClass('open').attr('aria-select', true).parent().next('.panel').slideToggle(200);
+			});	
         });
 
     </script>
@@ -65,7 +65,7 @@
 		<h4>case01</h4>
 		<ul class="accodionList case1">
 			<li>
-				<div class="tit Event"><a href="#" class="Event" role="button">질문</a></div>
+				<div class="tit"><a href="#" role="button">질문</a></div>
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
 			</li>
 			<li>
@@ -101,13 +101,6 @@
 				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
 			</li>
 		</ul>
-		<ul class="accodionList case">
-			<li>
-				<div class="tit"><a href="#" role="button">질문</a></div>
-				<div class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repellendus laudantium quo assumenda, ducimus exercitationem totam corporis accusantium ab quia reprehenderit beatae. Doloribus consequuntur dolore, laborum ipsa ullam architecto cumque!</div>
-			</li>
-		</ul>
-
 	</div>
     
 </body>
