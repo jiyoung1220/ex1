@@ -41,7 +41,8 @@
 					$(this).parent().next('.panel').slideDown(250);
 				}else{
 					$(this).parent().next('.panel').slideUp(250);
-				}		
+				}
+				return false;
 			});
 			var $accBtnCase2 = $('.accodionList.case2 li .tit a');
 			$accBtnCase2.on('click', function(){
@@ -49,13 +50,14 @@
 					$(this).parent().next('.panel').slideToggle(200);
 					$(this).closest('li').siblings().find($accBtnCase2).removeClass('open').parent().next('.panel').slideUp(200)			
 				}
+				return false;
 			})
 
 			var $accBtnCase = $('.accodionList.case li .tit a');
 			$accBtnCase.on('click', function(){
 				$(this).toggleClass('open').parent().next('.panel').fadeToggle(100);
+				return false;
 			});
-			return false;	
 		}
 
     </script>
